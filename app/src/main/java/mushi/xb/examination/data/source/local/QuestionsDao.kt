@@ -11,6 +11,15 @@ import mushi.xb.examination.data.Question
 @Dao
 interface QuestionsDao {
 
-    @Query("SELECT")
-    fun getQuestions(): List<Question>
+    @Query("SELECT * FROM questions WHERE type = '单选'")
+    fun getSingleOptionQuestions(): List<Question>
+
+    @Query("SELECT * FROM questions WHERE type = '多选'")
+    fun getMultiOptionQuestions(): List<Question>
+
+    @Query("SELECT * FROM questions WHERE type = '判断'")
+    fun getJudgmentQuestions(): List<Question>
+
+    @Query("SELECT * FROM questions WHERE type = '填空'")
+    fun getFillBlankQuestions(): List<Question>
 }
