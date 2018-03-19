@@ -11,7 +11,7 @@ import mushi.xb.examination.data.Question
  * Created by Tan.Yangfan on 2018/3/13.
  */
 @Database(entities = [Question::class], version = 1)
-abstract class QuestionsDatabase private constructor(context: Context) : RoomDatabase() {
+abstract class QuestionsDatabase : RoomDatabase() {
 
     companion object {
         private var INSTANCE: QuestionsDatabase? = null
