@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupViewFragment() {
         var startFragment: StartFragment? =
-                supportFragmentManager.findFragmentById(R.id.contentFrame) as StartFragment
-        startFragment?.let {
+                supportFragmentManager.findFragmentById(R.id.contentFrame) as StartFragment?
+        startFragment ?: let {
             startFragment = StartFragment.newInstance()
             ActivityUtils.replaceFragmentInActivity(
                     supportFragmentManager, startFragment!!, R.id.contentFrame)

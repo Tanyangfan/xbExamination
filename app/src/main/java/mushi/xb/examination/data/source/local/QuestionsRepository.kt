@@ -14,7 +14,7 @@ class QuestionsRepository(private val mQuestionsLocalDataSource: QuestionsDataSo
         private var INSTANCE: QuestionsRepository? = null
 
         fun getInstance(questionsLocalDataSource: QuestionsDataSource): QuestionsRepository {
-            INSTANCE?.let {
+            INSTANCE ?: let {
                 synchronized(QuestionsRepository::class) {
                     INSTANCE = QuestionsRepository(questionsLocalDataSource)
                 }

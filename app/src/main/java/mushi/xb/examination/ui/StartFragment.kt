@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import mushi.xb.examination.R
 import mushi.xb.examination.viewmodel.QuestionViewModel
-import java.util.*
 
 /**
  * 开始答题的Fragment

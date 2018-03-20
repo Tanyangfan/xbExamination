@@ -13,15 +13,15 @@ import mushi.xb.examination.data.source.local.QuestionsRepository
  * A creator is used to inject the product ID into the ViewModel
  * Created by Tan.Yangfan on 2018/3/19.
  */
-class ViewModelFactory(private val application: Application,
-                       private val repository: QuestionsRepository) : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory(private val mApplication: Application,
+                       private val mRepository: QuestionsRepository) : ViewModelProvider.NewInstanceFactory() {
     companion object {
         @SuppressLint("StaticFieldLeak")
         @Volatile
         private var INSTANCE: ViewModelFactory? = null
 
         fun getInstance(application: Application): ViewModelFactory {
-            INSTANCE?.let {
+            INSTANCE ?: let {
                 synchronized(ViewModelFactory::class) {
                     val database = QuestionsDatabase.getInstance(application.applicationContext)
                     INSTANCE = ViewModelFactory(
@@ -38,7 +38,11 @@ class ViewModelFactory(private val application: Application,
         }
     }
 
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return super.create(modelClass)
+        if (modelClass.isAssignableFrom(QuestionViewModel::class.java)) {
+            return QuestionViewModel(mApplication, mRepository) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
 }

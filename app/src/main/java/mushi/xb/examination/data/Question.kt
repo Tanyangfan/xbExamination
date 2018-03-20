@@ -10,16 +10,18 @@ import android.arch.persistence.room.PrimaryKey
  * Created by Tan.Yangfan on 2018/3/13.
  */
 @Entity(tableName = "questions")
-data class Question(
-        @ColumnInfo(name = "id")
-        @PrimaryKey(autoGenerate = true)
-        val id: Int,
-        @ColumnInfo(name = "type")
-        val type: String,
-        @ColumnInfo(name = "content")
-        val content: String,
-        @ColumnInfo(name = "options")
-        val options: String,
-        @ColumnInfo(name = "answer")
-        val answer: String
-)
+data class Question(@ColumnInfo(name = "id")
+                    @PrimaryKey(autoGenerate = true)
+                    var id: Int = 0) {
+
+    constructor() : this(0)
+
+    @ColumnInfo(name = "type")
+    var type: String = ""
+    @ColumnInfo(name = "content")
+    var content: String = ""
+    @ColumnInfo(name = "options")
+    var options: String = ""
+    @ColumnInfo(name = "answer")
+    var answer: String = ""
+}

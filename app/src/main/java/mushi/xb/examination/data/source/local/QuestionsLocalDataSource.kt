@@ -15,7 +15,7 @@ class QuestionsLocalDataSource(private val mAppExecutors: AppExecutors,
         private var INSTANCE: QuestionsLocalDataSource? = null
 
         fun getInstance(appExecutors: AppExecutors, questionsDao: QuestionsDao): QuestionsLocalDataSource {
-            INSTANCE?.let {
+            INSTANCE ?: let {
                 synchronized(QuestionsLocalDataSource::class) {
                     INSTANCE = QuestionsLocalDataSource(appExecutors, questionsDao)
                 }

@@ -20,9 +20,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding {
-        enabled = true
-    }
+//    dataBinding {
+//        enabled = true
+//    }
 }
 
 dependencies {
@@ -37,8 +37,8 @@ dependencies {
 
     // Room (use 1.1.0-alpha1 for latest alpha)
     implementation "android.arch.persistence.room:runtime:1.0.0"
-    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+    kapt "android.arch.persistence.room:compiler:1.0.0"
     // Lifecycle
     implementation "android.arch.lifecycle:extensions:1.1.0"
-    annotationProcessor "android.arch.lifecycle:compiler:1.1.0"
+    kapt "android.arch.lifecycle:compiler:1.1.0"
 }

@@ -17,7 +17,7 @@ abstract class QuestionsDatabase : RoomDatabase() {
         private var INSTANCE: QuestionsDatabase? = null
 
         fun getInstance(context: Context): QuestionsDatabase {
-            INSTANCE?.let {
+            INSTANCE ?: let {
                 synchronized(QuestionsDatabase::class) {
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
                             QuestionsDatabase::class.java, "questions.db")
